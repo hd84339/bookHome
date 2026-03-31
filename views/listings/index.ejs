@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookhome</title>
+</head>
+<body>
+
+    <h3>all listing</h3>
+    <h3>harsh is here i wnat to print here the all listing data </h3>
+
+    <% for(listing of  allListings) { %>
+        <div>
+            <ul>
+            <li><a href="/listings/<%= listing._id%>"><%= listing.title %> </a></li>
+            <li><%= listing.description %></li>
+            <li> Price: ₹<%= listing.price %></li>
+            <li><%= listing.location %>, <%= listing.country %></li>
+            </ul>
+            <hr>
+        </div>
+    <% } %>
+    
+</body>
+</html>
