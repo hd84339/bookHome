@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
+//
 // app.get('/testListings',  async(req, res) => {
 //     let sampleListing = new Listing({
 //         title: "Cozy Apartment in the City Center",
@@ -40,21 +41,35 @@ app.get('/', (req, res) => {
 //     res.send('Sample listing created and saved to the database!');
 // }
 // );
+//
 
-
-
-
- app.get('/listings',  async(req, res) => {
+app.get('/listings',  async(req, res) => {
     const  allListings  = await Listing.find({})
         res.render("listings/index", {allListings});
-    })
+    })    
 
-    // show route 
+
+app.get("/listings/new", (req, res) => {
+    res.render("listings/new");
+})
+
+// show route 
 app.get("/listings/:id", async (req, res) => {
     let {id} = req.params;
     const listing = await Listing.findById(id)
     res.render("listings/show", {listing});
 })
+
+
+// create route
+app.post("/listings", async (req, res) =>{
+    let listing = res.body;
+    console.log(listing)
+})
+
+// app.get("/listings/new", (req, res) => {
+// res.render("listings/new");
+// })
 
 
 app.listen(3000, () => {
