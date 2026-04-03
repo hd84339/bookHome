@@ -1,0 +1,59 @@
+<form action="/listings/<%= listing._id %>?_method=PUT" method="POST">
+    
+    <h2>Edit Listing</h2>
+
+    <input 
+        type="text" 
+        placeholder="enter the title" 
+        name="listing[title]" 
+        value="<%= listing.title %>"
+    >
+    
+    <br><br>
+
+    <textarea 
+        placeholder="enter description" 
+        name="listing[description]"
+    ><%= listing.description %></textarea>
+
+    <br><br>
+
+    <input 
+        type="text" 
+        placeholder="enter img url" 
+        name="listing[image][url]" 
+        value="<%= listing.image.url %>"
+    >
+
+    <br><br>
+
+    <input 
+        type="number" 
+        placeholder="enter the price" 
+        name="listing[price]" 
+        value="<%= listing.price %>"
+    >
+
+    <br><br>
+
+    <input 
+        type="text" 
+        placeholder="enter location" 
+        name="listing[location]" 
+        value="<%= listing.location %>"
+    >
+
+    <br><br>
+
+    <input 
+        type="text" 
+        placeholder="enter country" 
+        name="listing[country]" 
+        value="<%= listing.country %>"
+    >
+
+    <br><br>
+
+    <button type="submit">Update</button>
+
+</form>
