@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 const Listing = require('./models/listing.js');
 const path = require("path");
 const methodOverride = require("method-override")
-
+const session =  require("express-session");
+const flash =  require("connect-flash");
+const ejsMate = require("ejs-mate");
 
 
 const MONGO_URI = "mongodb://localhost:27017/bookHome";
@@ -25,6 +27,22 @@ app.set("views", path.join(__dirname, "views"));
 
  app.use(express.urlencoded({ extended: true }));
  app.use(methodOverride("_method"));
+ app.engine("ejs", ejsMate);
+ app.use(express.static(path.join(__dirname, "/public")))
+
+ app.use(session({
+    secret: "mysupersecret",
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use(flash());
+// make flash available in all templates
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    next();
+});
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
@@ -79,6 +97,8 @@ app.get("/listings/:id/edit", async (req, res) =>{
     res.render("listings/edit", {listing})
     
 })
+
+  //update route
 app.put("/listings/:id", async (req, res) => {
     let { id } = req.params;
 
@@ -88,6 +108,26 @@ app.put("/listings/:id", async (req, res) => {
 
     res.redirect(`/listings/${id}`);
 })
+
+// delete route 
+app.delete("/listings/:id", async (req, res) => {
+    try{
+
+    let { id }  = req.params;
+    let  deletedListing = await Listing.findByIdAndDelete(id);
+
+    if(!deletedListing){
+            req.flash("error", "Listing not found");
+            return res.redirect("/listings");
+    }
+    req.flash("success", "Listing deleted successfully");
+        res.redirect("/listings");
+} catch(err){
+     req.flash("error", "Something went wrong");
+        res.redirect("/listings");
+}
+})
+
 // app.get("/listings/:id", async (req, res) => {
 //     let { id } = req.params;
 
