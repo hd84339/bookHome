@@ -1,33 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookhome</title>
-</head>
-<body>
+<% layout("/layouts/boilerplate") %>
 
-    <form action="/listings" method="POST">
-        <h2>create a new listing</h2>
-        <input type="text" placeholder="enter the title" name="listing[title]">
-        <br>
-        <br>
-        <textarea type="text" placeholder="enter description" name="listing[description]">
-        </textarea>
-        <br>
-        <br>
-        <input type="text" placeholder="enter img url" name="listing[image_url]">
-        <br>
-        <br>
-        <input type="number" placeholder="enter the price" name="listing[price]">
-        <br>
-        <br>
-        <input type="text" placeholder="enter location" name="listing[location]">
-        <br>
-        <br>
-        <input type="text" placeholder="enter country" name="listing[country]">
-        <button>add</button>
-    </form>
-    
-</body>
-</html>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm border-0 rounded-4 p-4 p-md-5">
+            <h2 class="fw-black mb-4 text-center">Create a New Listing</h2>
+            
+            <form action="/listings" method="POST" class="needs-validation" novalidate>
+                
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="title" placeholder="Enter title" name="listing[title]" required>
+                    <label for="title">Title</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="description" placeholder="Enter description" name="listing[description]" style="height: 100px" required></textarea>
+                    <label for="description">Description</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="url" class="form-control" id="image" placeholder="Image URL" name="listing[image_url]" required>
+                    <label for="image">Image URL</label>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="price" placeholder="Price" name="listing[price]" required>
+                            <label for="price">Price (₹)</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="location" placeholder="Location" name="listing[location]" required>
+                            <label for="location">Location</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="country" placeholder="Country" name="listing[country]" required>
+                            <label for="country">Country</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill fw-bold mt-4 shadow-sm">Add Listing</button>
+            </form>
+        </div>
+    </div>
+</div>
