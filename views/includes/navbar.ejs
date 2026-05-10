@@ -1,26 +1,35 @@
-<nav class="navbar navbar-expand-md avbar-light bg-light">
+<!-- WanderLust Surgical Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-white bg-opacity-75 backdrop-blur sticky-top border-bottom border-light shadow-sm py-3">
   <div class="container">
 
-    <!-- Brand -->
-    <a class="navbar-brand fw-bold" href="/listings">
-  <i class="bi bi-house-door-fill me-2 text-primary"></i> 
-</a>
+    <!-- Brand: Technical Logo Node -->
+    <a class="navbar-brand d-flex align-items-center" href="/listings">
+      <div class="bg-primary bg-gradient p-2 rounded-3 me-2 d-flex align-items-center justify-content-center shadow-sm">
+        <i class="bi bi-compass-fill text-white fs-5"></i>
+      </div>
+      <span class="fw-black text-dark uppercase tracking-tighter fs-4">Book<span class="text-primary italic">Book.</span></span>
+    </a>
 
-    <!-- Toggle (for mobile) -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <!-- Toggler: Minimalist Interface -->
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Links -->
+    <!-- Navigation Hub -->
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        
-        <li class="nav-item">
-          <a class="nav-link" href="/listings">Home</a>
+      <ul class="navbar-nav ms-auto align-items-center">
+
+        <li class="nav-item px-lg-3">
+          <a class="nav-link text-uppercase fw-bold text-slate-500 hover-primary tracking-widest fs-small" href="/listings">
+            <span class="opacity-50 me-1 font-mono">01.</span> Home
+          </a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/listings/new">Add Listing</a>
+        <!-- Add Listing: Specialized Action Node -->
+        <li class="nav-item ms-lg-3">
+          <a class="nav-link px-4 py-2 bg-dark text-white rounded-pill fw-black text-uppercase tracking-widest fs-small shadow-lg hover-scale transition-all" href="/listings/new">
+            <i class="bi bi-plus-lg me-1"></i> Add Listing
+          </a>
         </li>
 
       </ul>
@@ -28,3 +37,32 @@
 
   </div>
 </nav>
+
+<style>
+  /* Modern CSS Extensions */
+  .backdrop-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .fw-black { font-weight: 900; }
+  .uppercase { text-transform: uppercase; }
+  .tracking-tighter { letter-spacing: -0.05em; }
+  .tracking-widest { letter-spacing: 0.2em; }
+  .fs-small { font-size: 10px; }
+  .font-mono { font-family: monospace; }
+  .italic { font-style: italic; }
+  
+  .hover-primary:hover {
+    color: #0d6efd !important;
+    transition: color 0.3s ease;
+  }
+  
+  .hover-scale:hover {
+    transform: translateY(-2px);
+    background-color: #0d6efd !important;
+  }
+  
+  .transition-all {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>
